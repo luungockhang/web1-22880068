@@ -1,0 +1,381 @@
+<!-- TODO: tiếp theo ở phút 50:00
+    (Tạo span element cho carousel để move vào chính giữa)
+Vấn đề: Gặp lỗi đánh số sẵn trên carousel
+-->
+<!doctype html>
+<html lang="en">  <!-- "bs5-$" "-->
+    <head>
+        <title>22880068 - Web1 Project</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <!-- FontAwesome -->
+        <script src="https://kit.fontawesome.com/686ae184f2.js" crossorigin="anonymous"></script>
+
+        <!-- Google Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&display=swap" rel="stylesheet">
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+
+        <!-- Web1 CSS-->
+        <link rel="stylesheet" href="css/22880068.css"/>
+    </head>
+
+    <body>
+        <header class="container">  <!-- class container: luon luon nam chinh giua man hinh-->
+            <!-- bs5-navbar-default: cu phap tao navbar default cua bootstrap-->
+            <nav
+                class="navbar navbar-expand-sm navbar-light"
+            >
+                <div class="container">
+                    <a class="navbar-brand" href="index.html">
+                        <img src="images/logo.png" alt="Web1 Logo">
+                    </a>
+                    <button
+                        class="navbar-toggler d-lg-none"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#menu-header"
+                        aria-controls="menu-header"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="menu-header">
+                        <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="index.html" aria-current="page"
+                                    >Home
+                                    <span class="visually-hidden">(current)</span></a
+                                >
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="gallery.html">Gallery</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="blogs.html">Blogs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="contacts.html">Contacts</a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-bs-toggle="modal"
+                                data-bs-target="#modalLogin">Login</a>
+                            </li> 
+                        </ul>
+                        <form class="d-flex my-2 my-lg-0 border rounded-pill" id="form-search">
+                            <input
+                                class="form-control border-0 ms-3"
+                                type="text"
+                                placeholder="Search"
+                            />
+                            <button
+                                class="btn my-2 my-sm-0"
+                                type="submit"
+                            >
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- banner -->
+        <section class="container-fluid" id="banner"> <!-- container fluid chiem toan bo man hinh-->
+            <div class="container text-white text-center">
+                <div id="carousel-banner" class="carousel slide" data-bs-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li
+                            data-bs-target="#carousel-banner"
+                            data-bs-slide-to="0"
+                            class="active"
+                            aria-current="true"
+                            aria-label="First slide" 
+                        >
+                            <span>0</span>
+                        </li>
+                        <li
+                            data-bs-target="#carousel-banner"
+                            data-bs-slide-to="1"
+                            aria-label="Second slide"
+                        >
+                            <span>1</span>
+                        </li>
+                        <li
+                            data-bs-target="#carousel-banner"
+                            data-bs-slide-to="2"
+                            aria-label="Third slide"
+                        >
+                            <span>2</span>
+                        </li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <h1>Web Development <br>
+                                for Everyone
+                            </h1>
+                            <a href="" class="btn text-bold text-uppercase text-white rounded-4 px-4">See more</a>
+                        </div>
+                        <div class="carousel-item">
+                            <h1>22880068 <br>
+                            Lưu Ngọc Khang</h1>
+                        </div>
+                        <div class="carousel-item">
+                            <h1>Lap trinh web 1 <br>
+                                DTTX - Hoc ky 2 - Nam hoc 2023-2024
+                            </h1>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- products -->
+        <section class="container py-5">
+            <div class="row text-center">
+                <!-- Muon chia cot, cac cot phai nam trong mot the co class la row-->
+                <div class="col-lg-3 col-md-6 col-sm-12"> 
+                    <!--Mot dong co 12 vung, man hinh lon thi mot cot chiem 3 vung-->
+                    <!--Tuong tu, medium thi 1:6, small thi 1:12-->
+                    <img src="/images/icon-1.png" alt="Coffee">
+                    <h3>Coffee</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <a class="readmore btn btn-link pt-0" href="#">Read more</a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <img src="/images/icon-2.png" alt="Drinks">
+                    <h3>Drinks</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <a class="readmore btn btn-link pt-0" href="#">Read more</a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <img src="/images/icon-3.png" alt="Cakes">
+                    <h3>Cakes</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <a class="readmore btn btn-link pt-0" href="#">Read more</a>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <img src="/images/icon-4.png" alt="Ice Cream">
+                    <h3>Ice Cream</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    <a class="readmore btn btn-link pt-0" href="#">Read more</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- about us -->
+        <section class="container-fluid" id="aboutus">
+            <div class="container">
+                <div class="row py-5">
+                    <div class="col-lg-9 col-md-8 col-sm-12 text-black-50">
+                        <h1 class="text-white">About Us</h1>
+                        <img class="float-start me-3" src="images/icon-about.png" alt="About us">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat harum possimus amet velit aliquid, ea beatae dignissimos consectetur et vero. Porro atque deleniti sint veritatis voluptate nesciunt similique temporibus reprehenderit?</p>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non, ducimus eius? Lorem ipsum dolor sit amet. Lorem, ipsum.
+                            <a href="about.html" class="btn btn-link readmore my-0 p-0">Read more</a>
+                        </p>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-12">
+                        <form action="" id="formSignUp" class="border border-3 rounded-4 border-dark p-3 overflow-auto">
+                            <h3 class="text-center text-white">Newsletter <br>
+                                Sign Up</h3>
+                                <p class="text-left text-black-50 mb-2">Please, write an e-mail:</p>
+                                <input type="email" name="email-signup" id="email-signup" class="form-control mt-0 mb-2">
+                                <button type="submit" class="btn btn-dark text-white float-end text-uppercase rounded-4 px-4">
+                                    <h4 class="my-0">Sign up</h4></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- news -->
+        <section class="container py-5" id="news">
+            <h1 class="text-black-10">News</h1>
+            <div class="row py-3">
+                <div class="col">
+                    <div class="float-start me-3">
+                        <div class="date text-white text-center rounded-4 py-1">
+                            <h3>Dec.<br>
+                            25</h3>
+                        </div>
+                        <a href="" class="btn btn-link readmore ps-0">Read more</a>
+                    </div>
+                    <div>
+                        <h3>Accumsan et</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, nobis.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="float-start me-3">
+                        <div class="date text-white text-center rounded-4 py-1">
+                            <h3>Dec.<br>
+                            25</h3>
+                        </div>
+                        <a href="" class="btn btn-link readmore ps-0">Read more</a>
+                    </div>
+                    <div>
+                        <h3>Accumsan et</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, nobis.</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="float-start me-3">
+                        <div class="date text-white text-center rounded-4 py-1">
+                            <h3>Dec.<br>
+                            25</h3>
+                        </div>
+                        <a href="" class="btn btn-link readmore ps-0">Read more</a>
+                    </div>
+                    <div>
+                        <h3>Accumsan et</h3>
+                        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta, nobis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <main></main>
+        <footer class="text-center container-fluid text-white py-3" id="menu-footer">
+            <!-- place footer here -->
+            <ul
+                class="nav justify-content-center py-3"
+            >
+                <li class="nav-item">
+                    <a class="nav-link active" href="index.html" aria-current="page"
+                        >Home</a
+                    >
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="gallery.html">Gallery</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="blogs.html">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="contacts.html">Contacts</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal"
+                    data-bs-target="#modalLogin">Login</a>
+                </li>
+            </ul>
+            
+            <p class="text-white-50">Copyright &copy; 2024 by Lưu Ngọc Khang - 22880068</p>
+        </footer>
+        
+        <!-- Modal trigger button 
+        <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            data-bs-toggle="modal"
+            data-bs-target="#modalLogin"
+        >
+            Launch
+        </button>
+
+            Note: Copy 2 thuộc tính dưới đây vào các link muốn xử lý modal
+            (2 link login trên)
+            data-bs-toggle="modal" <- toggle modal của bootstrap
+            data-bs-target="#modalLogin" <- chứa ID của modal body phía dưới
+        -->
+
+
+        <!-- Modal Body -->
+        <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+        <div
+            class="modal fade"
+            id="modalLogin"
+            tabindex="-1"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            
+            role="dialog"
+            aria-labelledby="modalTitleId"
+            aria-hidden="true"
+        >
+            <div
+                class="modal-dialog"
+                role="document"
+            >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" method="post" id="formLogin">
+                            <h3 class="text-center">Login Form</h3>
+                            <div class="mb-3">
+                                <input type="text" name="username" id="username" placeholder="Username" class="form-control">
+                            <div class="mb-3">
+                                <input type="password" name="password" id="password" placeholder="Password" class="form-control"></div>
+                            </div>
+                            <button type="submit" class="form-control btn">Login</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Optional: Place to the bottom of scripts -->
+        <script>
+            const myModal = new bootstrap.Modal(
+                document.getElementById("modalId"),
+                options,
+            );
+        </script>
+        
+
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>
