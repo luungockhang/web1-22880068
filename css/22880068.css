@@ -63,7 +63,7 @@ h1 {
     min-height: 15rem;
 }
 
-#banner .carousel-indicators li{
+#banner .carousel-indicators button{
     width : 1.2rem; /*width height giong nhau -> hinh vuong*/
     height: 1.2rem;
     border-radius: 1.2rem; /*mac dinh bo tron*/
@@ -73,7 +73,7 @@ h1 {
 }
 
 
-#banner .carousel-indicators li span{
+#banner .carousel-indicators button span{
     position: absolute; /*chính giữa li*/
     top: 0.3rem;
     left: 0.3rem;
@@ -85,7 +85,7 @@ h1 {
     text-indent: -9999px
 }
 
-#banner .carousel-indicators li.active span{
+#banner .carousel-indicators button.active span{
     background-color: var(--web1-green);
 }
 
