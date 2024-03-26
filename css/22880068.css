@@ -93,9 +93,21 @@ h1 {
     list-style-type:none;
 }
 
+#banner-small{
+    background-image: url('../images/bg-banner.gif');
+    padding: 5px;
+    
+}
+
+/* Products */
+
 .readmore{
     color: var(--web1-blue);
     margin-top: -3px;
+}
+
+.web1-text-blue{
+    color: var(--web1-blue);
 }
 
 #aboutus{
@@ -109,6 +121,8 @@ h1 {
 
 #news .date{
     background-color: var(--web1-green);
+    width:6rem;
+    padding:1.5rem;
 }
 
 /* footer */
@@ -127,6 +141,7 @@ footer {
 #menu-footer a.active{
     color: var(--web1-pink)
 }
+
 
 /*Modal Login*/
 #formLogin button[type='submit']{
