@@ -359,11 +359,7 @@
                 options,
             );
 
-            async function(){
-                const response = await fetch("https://web1-22880068.vercel.app/api/products");
-                const data = await response.json();
-                console.log(data);
-            }
+
         </script>
         
 
@@ -379,5 +375,36 @@
             integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
             crossorigin="anonymous"
         ></script>
+
+        <!-- Handlebar JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js" integrity="sha512-E1dSFxg+wsfJ4HKjutk/WaCzK7S2wv1POn1RRPGh8ZK+ag9l244Vqxji3r6wgz9YBf6+vhQEYJZpSjqWFPg9gg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+
+        <script id="products-template" type="text/x-handlebars-template"></script>
+        <div class="row text-center">
+            <!-- Xoa di nhung cai dang bi trung -->
+            {{#each data}}
+            <div class="col-lg-3 col-md-6 col-sm-12"> 
+                <!--Mot dong co 12 vung, man hinh lon thi mot cot chiem 3 vung-->
+                <!--Tuong tu, medium thi 1:6, small thi 1:12-->
+                <img src="{{imagepath}}" alt="{{name}}">
+                <h3>{{name}}</h3>
+                <p>{{summary}}</p>
+                <a class="readmore btn btn-link pt-0" href="#">Read more</a>
+            </div>
+            {{/each}}
+        </div>
+        <script>            
+        (async function(){
+            const response = await fetch("https://web1-22880068.vercel.app/api/products");
+            const data = await response.json();
+            
+            var source = document.getElementById("products-template").innerHTML;
+            var template = Handlebars.compile(source);
+            var context = { data : data };
+            var html = template(context);
+            console.log(html);
+        })();
+        </script>
     </body>
 </html>
