@@ -358,6 +358,12 @@
                 document.getElementById("modalId"),
                 options,
             );
+
+            async function(){
+                const response = await fetch("https://web1-api.herokuapp.com/api/products");
+                const data = await response.json();
+                console.log(data);
+            }
         </script>
         
 
