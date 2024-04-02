@@ -165,3 +165,10 @@ footer {
     background: url('../images/quot.png') left top no-repeat;
     padding: 0 0 0 3rem;
 }
+
+/* Blogs */
+#blogs-categories li{
+    list-style-type: none;
+    background: url('../images/marker1.png') 0 0.25rem no-repeat;
+    padding: 0 0 0.5rem 1.5rem;
+}
