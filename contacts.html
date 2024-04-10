@@ -139,7 +139,7 @@
                     </div>
                     <div class="row">
                         <div class="col">
-                            <div id="responseMessage" class="text-info text-center"></div>
+                            <div id="responseMessage" class="text-info"></div>
                         </div>
                         <div class="col">
                             <div class="text-end">
@@ -283,13 +283,20 @@
                 if (response.status == 200) {
                     sendMail();
                 } else {
-                    document.getElementById('responseMessage').innerHTML = 'Error: Cannot verify RECAPTCHA';
+                    let responseMessage = document.getElementById('responseMessage');
+                    responseMessage.innerHTML = 'Error: Cannot verify RECAPTCHA';
+                    responseMessage.classList.remove();
+                    responseMessage.classList.toggle('text-danger');
+
                 }
             }
         }
 
         function sendMail(){
-            document.getElementById('responseMessage').innerHTML = 'OK';
+            let responseMessage = document.getElementById('responseMessage');
+            responseMessage.innerHTML = 'OK';
+            responseMessage.classList.remove();
+            responseMessage.classList.toggle('text-info');
         }
     </script>
 </body>
