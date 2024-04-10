@@ -274,15 +274,13 @@
                     body:JSON.stringify({'g-token': token})
                 });
                 if (response.status == 200) {
-                    sendMail('OK');
-                } else {
-                    sendMail('Error: Cannot verify RECAPTCHA');
+                    sendMail();
                 }
             }
         }
 
-        function sendMail(message){
-            document.getElementByID('responseMessage').innerHTML = message;
+        function sendMail(){
+            document.getElementByID('responseMessage').innerHTML = 'OK';
         }
     </script>
 </body>
