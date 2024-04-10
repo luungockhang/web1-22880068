@@ -267,11 +267,9 @@
     <script>        
         function onClick(e) {
             e.preventDefault();
-            grecaptcha.enterprise.ready(async () => {
-            const token = await grecaptcha.enterprise.execute('6LfvPLYpAAAAAJFrcPQXFOGx6104pK5AdgfGB5o7', {action: 'submit'});
-            });
-
-            async (token) => {
+            grecaptcha.enterprise.ready(function () {
+            grecaptcha.enterprise.execute('6LfvPLYpAAAAAJFrcPQXFOGx6104pK5AdgfGB5o7', 
+            {action: 'submit'}).then(async function(token) {
                 let response = await fetch('verify.php', {
                     method: 'POST',
                     headers:{
@@ -289,8 +287,10 @@
                     responseMessage.classList.toggle('text-danger');
 
                 }
-            }
-        }
+               
+        });
+        });
+        };
 
         function sendMail(){
             let responseMessage = document.getElementById('responseMessage');
