@@ -1,4 +1,5 @@
 const API = "https://web1-api.vercel.app/api";
+const siteKey = "6Lea2bcpAAAAAArBqKF1mP8v0lCpOhivhL9JnPZz";
 
 async function loadData(request, templateId, viewId){
     const response = await fetch(`${API}/${request}`);

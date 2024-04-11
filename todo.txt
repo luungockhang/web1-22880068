@@ -1,0 +1,1 @@
+Fix recaptcha later. (Video 14) -> Host the site on a PHP-supported host. (000webhost.com)
