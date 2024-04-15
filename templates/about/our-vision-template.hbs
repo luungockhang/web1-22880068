@@ -1,0 +1,11 @@
+<h1 class="py-3">Our Vision</h1>
+{{#each data}}
+<div class="clearfix mb-3">
+    <a class="text-decoration-none" href="#visions/{{id}}"
+        onclick="loadDetails('visions/{{id}}','details-template','content')">
+        <img src="{{thumbpath}}" alt="{{name}}" class="float-start me-3 rounded-4">
+        <h3 class="text-black">{{name}}</h3>
+        <p class="text-black-50">{{summary}}</p>
+    </a>
+</div>
+{{/each}}
