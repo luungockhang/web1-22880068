@@ -230,9 +230,11 @@
             <img src="{{imagepath}}" alt="{{name}}" class="float-start me-3 rounded-4">
             <div class="text-black-50">{{{description}}}</div>
         </div>
-        <div class="py-3">
+        
+        <div class="py-3" id="leave-comments">
             <h3>Leave your comments</h3>
-            <form action="#" method="post" class="text-black-50">
+            <form action="#" method="post" class="text-black-50" obsubmit="addComment(event)">
+                <input type="hidden" name="blogId" id="blogId" value="{{id}}">
                 <div class="row">
                     <div class="col-4">
                         <div class="mb-3">
@@ -249,7 +251,7 @@
                 </div>
                 <div>
                     <div class="mb-3">
-                        <textarea class="form-control" name="message" id="message" rows="3" placedholder="Enter your message..." required></textarea>
+                        <textarea class="form-control" name="comment" id="comment" rows="3" placedholder="Enter your comment..." required></textarea>
                     </div>
                 </div>
                 <div class="row">
@@ -263,8 +265,10 @@
                         <button type="submit" class="btn btn-link py-0 my-0">
                             Submit Comment
                         </button>
-
                     </div>
+                </div>
+                <div class="text-center">
+                    <div class="text-success" id="responseMessage"></div>
                 </div>
             </form>
         </div>
@@ -311,20 +315,57 @@
             var view = document.getElementById('blogs');
             view.innerHTML = template(context);
         };
-                    
+        
+        checkLogin();
+        loadData('blogs-categories', 'blogs-categories-template', 'blogs-categories');
+        loadBlogs('blogs')      
+
         async function loadBlogDetails(blogId, gotoComments = false){
             await loadData(`blogs/${blogId}`,'details-template','blogs');
+            checkLogin();
             if (gotoComments){
                 window.location.href = "#comments";
             }
         }
+
+        async function addComment(event){
+            event.preventDefault();
+            
+            let token = localStorage.getItem('token');
+            let postData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                comment: document.getElementById('comment').value,
+                blogId: document.getElementById('blogId').value,
+                agree: (document.getElementById('agree').value == 1)
+            };
+
+            let responseMessage = document.getElementById('responseMessage');
+            try {
+                let response = await fetch(`${AUTHENTICATE_API}/comment`,{
+                    method:'POST',
+                    headers:{
+                        'Content-Type' : 'application/json',
+                        'Accept' : 'application/json',
+                        'Authorization' : 'Bearer ' + token
+                    },
+                    body: JSON.stringify(postData)
+                });
+                let result = await resopnse.json();
+                if (response.status == 200) {
+                    loadBlogDetails(postData.blogId, true);
+                    responseMessage.innerHTML = result.message;
+                    responseMessage.className = 'text-success';
+                } else {
+                    throw new Error (result.message);
+                }
+            } catch (error){
+                responseMessage.innerHTML = result.message;
+                responseMessage.className = 'text-danger';
+            }
+        }
     </script>
 
-    <script>
-        checkLogin();
-        loadData('blogs-categories', 'blogs-categories-template', 'blogs-categories');
-        loadBlogs('blogs')
-    </script>
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

@@ -56,6 +56,7 @@ function displayControls(isLogin = true){
 
     let displayLogin = 'none';
     let displayLogout = 'block';
+
     if (!isLogin){
         displayLogin = 'block';
         displayLogout = 'none';
@@ -65,8 +66,12 @@ function displayControls(isLogin = true){
         linkLogins[i].style.display = displayLogin;
         linkLogouts[i].style.display = displayLogout;
     }
-}
 
+    let commentControl = document.getElementById('leave-comments');
+    if (commentControl) { // if comment control exists (on comment page) 
+        commentControl.style.display = displayLogout; // means displays.
+    }
+}
 async function checkLogin(){
     let isLogin = await verifyToken();
     displayControls(isLogin);
