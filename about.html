@@ -77,9 +77,10 @@ Vấn đề: Gặp lỗi đánh số sẵn trên carousel
                                 <a class="nav-link" href="contacts.html">Contacts</a>
                             </li> 
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-bs-toggle="modal"
+                                <a class="nav-link linkLogin" href="#" data-bs-toggle="modal"
                                 data-bs-target="#modalLogin">Login</a>
-                            </li> 
+                                <a href="#" class="nav-link linkLogout" onclick="logout()">Logout</a>
+                            </li>
                         </ul>
                         <form class="d-flex my-2 my-lg-0 border rounded-pill" id="form-search">
                             <input
@@ -147,8 +148,9 @@ Vấn đề: Gặp lỗi đánh số sẵn trên carousel
                     <a class="nav-link" href="contacts.html">Contacts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-bs-toggle="modal"
-                    data-bs-target="#modalLogin">Login</a>
+                    <a class="nav-link linkLogin" href="#" data-bs-toggle="modal"
+                    data-bs-target="#modalLogin" style="display:none">Login</a>
+                    <a href="#" class="nav-link linkLogout" onclick="logout()">Logout</a>
                 </li>
             </ul>
             
@@ -199,7 +201,7 @@ Vấn đề: Gặp lỗi đánh số sẵn trên carousel
                         ></button>
                     </div>
                     <div class="modal-body">
-                        <form action="#" method="post" id="formLogin">
+                        <form action="#" method="post" id="formLogin" onsubmit="login(event)">
                             <h3 class="text-center">Login Form</h3>
                             <div class="mb-3">
                                 <input type="text" name="username" id="username" placeholder="Username" class="form-control">
@@ -209,7 +211,7 @@ Vấn đề: Gặp lỗi đánh số sẵn trên carousel
                             <button type="submit" class="form-control btn">Login</button>
                         </form>
                     </div>
-                    <div class="modal-footer">
+                    <div class="modal-footer justify-content-center">
                         <div class="text-danger" id="errorMessage"></div>
                     </div>
                 </div>
@@ -312,6 +314,7 @@ Vấn đề: Gặp lỗi đánh số sẵn trên carousel
 
         <!-- business scripts -->
         <script>
+            checkLogin();
             loadData("aboutus","about-us-template","about-us");
             loadData("visions","our-vision-template","our-vision");
             loadData("testimonials","testiomnials-template","testimonials");
