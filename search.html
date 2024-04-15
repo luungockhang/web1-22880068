@@ -78,11 +78,14 @@
                                 <a href="#" class="nav-link linkLogout" onclick="logout()" style="display:none">Logout</a>
                             </li>
                         </ul>
-                        <form class="d-flex my-2 my-lg-0 border rounded-pill" id="form-search">
+                        <form class="d-flex my-2 my-lg-0 border rounded-pill" id="form-search" method="GET" action="search.html">
                             <input
                                 class="form-control border-0 ms-3"
                                 type="text"
                                 placeholder="Search"
+                                name="keyword"
+                                id="keyword"
+                                required
                             />
                             <button
                                 class="btn my-2 my-sm-0"
@@ -98,8 +101,8 @@
 
         <section id="banner-small"></section>
         <section class="container py-5">
+            <div id="content"></div>
         </section>
-
         <main></main>
         <footer class="text-center container-fluid text-white py-3" id="menu-footer">
             <!-- place footer here -->
@@ -221,45 +224,38 @@
         </script>
         <script src="js/22880068.js"></script>
 
-        <script id="gallery-template" type="text/x-handlebars-template">
+        <script id="search-template" type="text/x-handlebars-template">
             {{#each data}}
-            <div class="col-md-3">
-                <img src="{{thumbpath}}" alt="{{name}}" class="img-thumbnail mb-3">
+            <div class="py-3">
+                <a class="text-decoration-none" href="#" onclick="loadData('{{type}}/{{id}}','details-template', 'content')">
+                <h1 class="text-black">{{name}}</h1></a>
+                <div class="text-black-50">
+                    {{summary}}
+                </div>
             </div>
             {{/each}}
         </script>
-
-        <script id="gallery-categories-template" type="text/x-handlebars-template">
-            <li class="nav-item">
-                <a class="nav-link disabled ps-0" href="#" aria-current="page"
-                    onclick="loadData('gallery','gallery-template','gallery'); disabledLink(this);">Show all</a
-                >
-            </li>
+        <script id="details-template" type="text/x-handlebars-template">
             {{#each data}}
-            <li class="nav-item">
-                <a class="nav-link" href="#"
-                onclick="loadData('gallery/categories/{{id}}','gallery-template','gallery'); disabledLink(this)">{{name}}</a>
-            </li>
+            <h1>{{name}}</h1>
+            {{#if imagepath}}
+            <img src="{{imagepath}}" alt="{{name}}" class="float-start me-3">
+            {{/if}}
+            <div class="text-black-50">{{{description}}}</div>
             {{/each}}
         </script>
-
         <script>
             checkLogin();
-            loadData('gallery-categories','gallery-categories-template','gallery-categories');
-            loadData('gallery','gallery-template','gallery')
-
-            function disabledLink(link){
-                /*
-                1. Lấy tất cả link theo selector #gallery-categories a (các link có id gallery-categories)
-                2. bỏ disabled ra khỏi tất cả các link này
-                3. toggle disabled cho link hiện tại
-                */
-                let links = document.querySelectorAll('#gallery-categories a');
-                for (let i=0; i<links.length;i++){
-                    links[i].classList.remove('disabled');
+            
+                let searchParams = new URLSearchParams(location.search);
+                let keyword = searchParams.get('keyword');
+                if (keyword) {
+                    keyword = keyword.trim();
+                    if (keyword != ''){
+                        loadData(`search?keyword=${keyword}`,'search-template','content');
+                    }
                 }
-                link.classList.toggle('disabled');
-            }
+            
         </script>
     </body>
 </html>
