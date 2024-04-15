@@ -73,9 +73,10 @@
                                 <a class="nav-link" href="contacts.html">Contacts</a>
                             </li> 
                             <li class="nav-item">
-                                <a class="nav-link" href="#" data-bs-toggle="modal"
+                                <a class="nav-link linkLogin" href="#" data-bs-toggle="modal"
                                 data-bs-target="#modalLogin">Login</a>
-                            </li> 
+                                <a href="#" class="nav-link linkLogout"></a>
+                            </li>
                         </ul>
                         <form class="d-flex my-2 my-lg-0 border rounded-pill" id="form-search">
                             <input
@@ -209,8 +210,9 @@
                     <a class="nav-link" href="contacts.html">Contacts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" data-bs-toggle="modal"
+                    <a class="nav-link linkLogin" href="#" data-bs-toggle="modal"
                     data-bs-target="#modalLogin">Login</a>
+                    <a href="#" class="nav-link linkLogout"></a>
                 </li>
             </ul>
             
@@ -261,25 +263,18 @@
                         ></button>
                     </div>
                     <div class="modal-body">
-                        <form action="#" method="post" id="formLogin">
+                        <form action="#" method="post" id="formLogin" onsubmit="login(event)">
                             <h3 class="text-center">Login Form</h3>
                             <div class="mb-3">
-                                <input type="text" name="username" id="username" placeholder="Username" class="form-control">
+                                <input type="text" name="username" id="username" placeholder="Username" class="form-control" required>
                             <div class="mb-3">
-                                <input type="password" name="password" id="password" placeholder="Password" class="form-control"></div>
+                                <input type="password" name="password" id="password" placeholder="Password" class="form-control" required></div>
                             </div>
                             <button type="submit" class="form-control btn">Login</button>
                         </form>
                     </div>
-                    <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                        >
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-primary">Save</button>
+                    <div class="modal-footer justify-content-center">
+                        <div class="text-danger" id="errorMessage"></div>
                     </div>
                 </div>
             </div>
@@ -355,6 +350,7 @@
             {{/each}}
         </script>
         <script>
+            checkLogin();
             loadData('products','products-template','products')
             loadData('news','news-template','news')
 
