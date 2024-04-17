@@ -1,0 +1,15 @@
+            <div class="row text-center">
+                <!-- Xoa di nhung cai dang bi trung -->
+                {{#each data}}
+                <div class="col-lg-3 col-md-6 col-sm-12"> 
+                    <!--Mot dong co 12 vung, man hinh lon thi mot cot chiem 3 vung-->
+                    <!--Tuong tu, medium thi 1:6, small thi 1:12-->
+                    <img src="{{imagepath}}" alt="{{name}}" 
+                    onmouseover="setActiveImagepath(this,'{{imagepath}}',true)" 
+                    onmouseout="setActiveImagepath(this,'{{imagepath}}',false)">
+                    <h3>{{name}}</h3>
+                    <p class="text-black-50">{{summary}}</p>
+                    <a class="readmore btn btn-link pt-0" href="?request=products/{{id}}">Read more</a>
+                </div>
+                {{/each}}
+            </div>

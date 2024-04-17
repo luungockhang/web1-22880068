@@ -1,0 +1,11 @@
+            <li class="nav-item">
+                <a class="nav-link disabled ps-0" href="#" aria-current="page"
+                    onclick="loadData('gallery','gallery-template','gallery'); disabledLink(this);">Show all</a
+                >
+            </li>
+            {{#each data}}
+            <li class="nav-item">
+                <a class="nav-link" href="#"
+                onclick="loadData('gallery/categories/{{id}}','gallery-template','gallery'); disabledLink(this)">{{name}}</a>
+            </li>
+            {{/each}}

@@ -1,14 +1,17 @@
 const API = "https://web1-api.vercel.app/api";
-const AUTHENTICATE_API = "https://web1-api.vercel.app/api/users"
+// const AUTHENTICATION_API = "https://web1-api.vercel.app/api/users";
+const AUTHENTICATION_API = 'https://web1-api.vercel.app/users';
 const siteKey = "6Lea2bcpAAAAAArBqKF1mP8v0lCpOhivhL9JnPZz";
 
 async function loadData(request, templateId, viewId){
     const response = await fetch(`${API}/${request}`);
     const data = await response.json();
     
-    var source = document.getElementById(templateId).innerHTML;
-    var template = Handlebars.compile(source);
+    // var source = document.getElementById(templateId).innerHTML;
+    // var template = Handlebars.compile(source);
+    var template = Handlebars.templates[`${templateId}`];
     var context = { data : data };
+
     var view = document.getElementById(viewId);
     view.innerHTML = template(context);
 };
@@ -34,7 +37,7 @@ async function login(e){
 }
 
 async function getAuthenticateToken(username,password){
-    let response = await fetch(`${AUTHENTICATE_API}/authenticate`,{
+    let response = await fetch(`${AUTHENTICATION_API}/authenticate`,{
         method: 'POST',
         headers: {
             'Content-Type' : 'application/json',
@@ -80,7 +83,7 @@ async function checkLogin(){
 async function verifyToken(){
     let token = localStorage.getItem('token');
     if (token){
-        let response = await fetch(`${AUTHENTICATE_API}/verify`, {
+        let response = await fetch(`${AUTHENTICATION_API}/verify`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
