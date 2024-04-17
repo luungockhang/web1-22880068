@@ -45,10 +45,19 @@ async function getAuthenticateToken(username,password){
         },
         body: JSON.stringify({username,password})
     });
+    // }).then(async(res) => {
+    //     let result = await res.json();
+    //     if (res.status === 400) {
+    //         throw new Error(result.message);
+    //     } else if (res.status == 200) {
+    //         return result.token;
+    //     }
+    //     throw new Error(res.message);
+    // });
 
     let result = await response.json();
-    if (response.status = 200){
-        return result.token;
+    if (response.status == 200){
+         return result.token;
     }
     throw new Error(result.message);
 }

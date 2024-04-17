@@ -301,8 +301,7 @@
                     } else {
                         let responseMessage = document.getElementById('responseMessage');
                         responseMessage.innerHTML = 'Error: Cannot verify RECAPTCHA';
-                        responseMessage.classList.remove();
-                        responseMessage.classList.toggle('text-danger');
+                        responseMessage.className = 'text-danger';
 
                     }
 
@@ -334,14 +333,12 @@
                 let result = await response.json();
                 if (response.status == 200) {
                     responseMessage.innerHTML = result.message;
-                    responseMessage.classList.remove();
                     responseMessage.className = "text-primary";
                 } else {
                     throw new Error(result.message);
                 }
             } catch (error){
                 responseMessage.innerHTML = error;
-                responseMessage.classList.remove();
                 responseMessage.className = 'text-danger';
             }
         }
